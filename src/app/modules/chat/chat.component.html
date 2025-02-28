@@ -9,33 +9,15 @@
         </div>
     
         <div class="user-chats">
-
-            <div class="item">
+            <div class="item"  *ngFor="let item of chat_users">
                 <div class="image"></div>
                 <div class="description">
-                    <p>Usuario 1</p>
-                </div>
-            </div>
-        
-
-    
-            <div class="item">
-                <div class="image"></div>
-                <div class="description">
-                    <p>Usuario 2</p>
-                </div>
-            </div>
-
-    
-            <div class="item">
-                <div class="image"></div>
-                <div class="description">
-                    <p>Usuario 3</p>
+                    <p class="username">{{item.name}}</p>
+                    <p class="last-message">{{item.message}}</p>
+                    <small>{{item.date}}</small>
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <div class="chat-panel">
@@ -48,20 +30,17 @@
         <!--Este es el bueno-->
         <div class="chat-content">
 
-            <div class="message-sender">
-                <div class="message-content">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos delectus saepe repellat, perferendis eos tempora alias aliquam officia ratione, minus quasi perspiciatis officiis quaerat enim. Assumenda eius distinctio temporibus fugiat.</p>
-                    <small>fecha</small>
-                </div>    
-            </div>
-
-            <div class="message-receiver">
-                <div class="message-content">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi ab delectus voluptatum iusto suscipit laudantium animi aliquam excepturi! Sed architecto quaerat laudantium perspiciatis voluptatum ullam cumque itaque, mollitia exercitationem accusantium.</p>
-                    <small>fecha</small>
+            <div class="message" *ngFor="let item of chat_users[0].messages">
+                <div ngClass="message-{{item.id}}">
+                    <div ngClass="message-content-{{item.id}}">
+                        <p>{{item.message}}</p>
+                        <small>{{item.date}}</small>
+                    </div>
                 </div>
             </div>
+
         </div>
+
         <div class="chat-input">
             <input type="text" placeholder="Ingresa un mensaje.">
             <button><img src="assets/images/google_send.svg" alt="SEND"></button>
